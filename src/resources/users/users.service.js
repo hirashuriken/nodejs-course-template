@@ -1,6 +1,7 @@
 const usersRepo = require('./users.memory.repository.js');
 const User = require('./users.model.js');
 const tasksService = require('../tasks/tasks.service.js');
+const { NotFoundError } = require('../../helpers/error.helper.js');
 
 /**
  * Returns users
@@ -33,7 +34,7 @@ const getUser = async userId => {
   const user = await usersRepo.getOne(userId);
 
   if (!user) {
-    return null;
+    throw new NotFoundError('User has not found');
   }
 
   return User.toResponse(user);

@@ -6,5 +6,5 @@ const tasks = require('./tasks');
 
 module.exports = Router()
   .use('/users', users)
-  .use('/boards', tasks)
+  .use('/boards/:boardId/tasks', tasks)
   .use('/boards', boards);
