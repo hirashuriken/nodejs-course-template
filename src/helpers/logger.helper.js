@@ -2,16 +2,10 @@ const chalk = require('chalk');
 
 const logUncaughtException = err => {
   console.log(`${chalk.red.bold('Uncaught Exception:')} ${err} \n`);
-
-  const { exit } = process;
-  exit(1);
 };
 
 const logUnhandledRejection = err => {
   console.error(`${chalk.red.bold('Uncaught Rejection:')} ${err} \n`);
-
-  const { exit } = process;
-  exit(1);
 };
 
 const logValidationError = err => {
@@ -53,7 +47,7 @@ const logBody = ({ body }) => {
 const logDuration = startTimeMs => {
   const durationMs = Date.now() - startTimeMs;
 
-  console.log(` ${chalk.yellow('Duration:')} ${durationMs} ms`);
+  console.log(` ${chalk.yellow('Duration:')} ${durationMs}ms`);
 };
 
 const logStatusCode = ({ statusCode }) => {
@@ -68,8 +62,9 @@ const logRequest = req => {
   console.log('');
 };
 
-const logResponse = (res, startTimeMs) => {
+const logResponse = (req, res, startTimeMs) => {
   logTitle('Response');
+  logURL(req);
   logStatusCode(res);
   logDuration(startTimeMs);
   console.log('');
