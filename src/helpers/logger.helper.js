@@ -17,7 +17,7 @@ const logNotFoundError = err => {
 };
 
 const logError = err => {
-  console.error(`${chalk.red.bold('Error:')} ${err.message} \n`);
+  console.error(`${chalk.red.bold(err.stack)} \n`);
 };
 
 const logTitle = title => {
