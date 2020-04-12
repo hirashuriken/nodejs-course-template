@@ -1,11 +1,11 @@
 const chalk = require('chalk');
 
 const logUncaughtException = err => {
-  console.log(`${chalk.red.bold('Uncaught Exception:')} ${err} \n`);
+  console.log(`${chalk.red.bold(`Uncaught Exception: ${err.stack}`)} \n`);
 };
 
 const logUnhandledRejection = err => {
-  console.error(`${chalk.red.bold('Uncaught Rejection:')} ${err} \n`);
+  console.error(`${chalk.red.bold(`Uncaught Rejection: ${err.stack}`)} \n`);
 };
 
 const logValidationError = err => {
