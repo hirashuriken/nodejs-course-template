@@ -24,7 +24,7 @@ process.on('uncaughtException', err => {
   exit(1);
 });
 
-// uncomment next line for checking uncaughtException
+// uncomment next line for checking 'uncaughtException'
 // throw Error('Oops!');
 
 process.on('unhandledRejection', err => {
@@ -34,7 +34,7 @@ process.on('unhandledRejection', err => {
   exit(1);
 });
 
-// uncomment next line for checking unhandledRejection
+// uncomment next line for checking 'unhandledRejection'
 // Promise.reject(Error('Oops!'));
 
 module.exports = express()
