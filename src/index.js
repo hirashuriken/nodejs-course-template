@@ -22,10 +22,10 @@ process.on('unhandledRejection', err => {
 });
 
 db.then(() => {
-  console.log('MongoDB connection successful');
+  console.log('MongoDB has been connected successfully');
 
   mongoose.connection.db.dropDatabase(
-    console.log('MongoDB collection was dropped successfully')
+    console.log('MongoDB db has been dropped successfully')
   );
 
   app.listen(config.PORT, () =>
