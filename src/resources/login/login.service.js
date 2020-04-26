@@ -12,7 +12,7 @@ const login = async user => {
 
   if (!dbUser) {
     throw new ForbiddenError(
-      'User has not found. Login or password is incorrect'
+      'User has not found. Login or password is incorrect.'
     );
   }
 
@@ -20,7 +20,7 @@ const login = async user => {
 
   if (!isMatch) {
     throw new ForbiddenError(
-      'User has not found. Login or password is incorrect'
+      'User has not found. Login or password is incorrect.'
     );
   }
 
