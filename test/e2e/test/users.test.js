@@ -41,11 +41,11 @@ describe('Users suite', () => {
       expect(Array.isArray(usersResponse.body)).to.be.true();
     });
 
-    it('should get a user by id', async () => {
+    it('should get a login by id', async () => {
       // Setup:
       let userId;
 
-      // Create the user
+      // Create the login
       await request
         .post(routes.users.create)
         .set('Accept', 'application/json')
@@ -67,13 +67,13 @@ describe('Users suite', () => {
       expect(userResponse.body).to.be.instanceOf(Object);
       expect(userResponse.body.id).to.equal(userId);
 
-      // Clean up, delete the user we created
+      // Clean up, delete the login we created
       await request.delete(routes.users.delete(userId));
     });
   });
 
   describe('POST', () => {
-    it('should create user successfully', async () => {
+    it('should create login successfully', async () => {
       let userId;
 
       await request
@@ -98,7 +98,7 @@ describe('Users suite', () => {
   });
 
   describe('PUT', () => {
-    it('should update user successfully', async () => {
+    it('should update login successfully', async () => {
       // Setup
       let userId;
 
@@ -140,7 +140,7 @@ describe('Users suite', () => {
   });
 
   describe('DELETE', () => {
-    it('should delete user successfully', async () => {
+    it('should delete login successfully', async () => {
       // Setup:
       const userResponse = await request
         .post(routes.users.create)
@@ -152,7 +152,7 @@ describe('Users suite', () => {
       expect(deleteResponse.status).oneOf([200, 204]);
     });
 
-    it("should unassign user's tasks upon deletion", async () => {
+    it("should unassign login's tasks upon deletion", async () => {
       // Setup:
       const userResponse = await request
         .post(routes.users.create)

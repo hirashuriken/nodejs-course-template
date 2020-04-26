@@ -1,11 +1,14 @@
 const db = require('./db.js');
 const app = require('./app.js');
-const mongoose = require('mongoose');
+
 const {
   logUncaughtException,
   logUnhandledRejection
 } = require('./helpers/logger.helper.js');
 const config = require('./config/config.js');
+const User = require('./resources/users/users.model.js');
+const Task = require('./resources/tasks/tasks.model.js');
+const Board = require('./resources/boards/boards.model.js');
 
 process.on('uncaughtException', err => {
   logUncaughtException(err);
@@ -21,12 +24,15 @@ process.on('unhandledRejection', err => {
   exit(1);
 });
 
-db.then(() => {
+db.then(async () => {
   console.log('MongoDB connection successful');
 
-  mongoose.connection.db.dropDatabase(
-    console.log('MongoDB collection was dropped successfully')
-  );
+  await User.deleteMany();
+  await Task.deleteMany();
+  await Board.deleteMany();
+
+  const admin = new User({ login: 'admin', password: 'admin' });
+  await admin.save();
 
   app.listen(config.PORT, () =>
     console.log(`App is running on http://localhost:${config.PORT}`)

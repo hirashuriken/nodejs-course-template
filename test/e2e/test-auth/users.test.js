@@ -13,7 +13,7 @@ describe('Users suite', () => {
     });
   });
 
-  describe('GET user by id', () => {
+  describe('GET login by id', () => {
     it('should get 401 without token presented ', async () => {
       await request.get(routes.users.getById('123')).expect(401);
     });

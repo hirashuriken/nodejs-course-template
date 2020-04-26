@@ -82,8 +82,8 @@ paths:
     post:
       tags:
         - Users
-      summary: Create user
-      description: Creates a new user (remove password from response)
+      summary: Create login
+      description: Creates a new login (remove password from response)
       requestBody:
         required: true
         content:
@@ -94,18 +94,18 @@ paths:
               properties:
                 name:
                   type: string
-                  description: The user's name
+                  description: The login's name
                 login:
                   type: string
-                  description: The user's login
+                  description: The login's login
                 password:
                   type: string
-                  description: The user's password
+                  description: The login's password
               required:
                 - name
       responses:
         200:
-          description: The user has been created.
+          description: The login has been created.
           content:
             application/json:
               schema:
@@ -124,8 +124,8 @@ paths:
     get:
       tags:
         - Users
-      summary: Get user by ID
-      description: Gets a user by ID
+      summary: Get login by ID
+      description: Gets a login by ID
         e.g. “/users/123” (remove password from response)
       responses:
         200:
@@ -141,8 +141,8 @@ paths:
     put:
       tags:
         - Users
-      summary: Update a user
-      description: Updates a user by ID
+      summary: Update a login
+      description: Updates a login by ID
       requestBody:
         required: true
         content:
@@ -153,18 +153,18 @@ paths:
               properties:
                 name:
                   type: string
-                  description: The user's name
+                  description: The login's name
                 login:
                   type: string
-                  description: The user's login
+                  description: The login's login
                 password:
                   type: string
-                  description: The user's password
+                  description: The login's password
               required:
                 - name
       responses:
         200:
-          description: The user has been updated.
+          description: The login has been updated.
           content:
             application/json:
               schema:
@@ -176,13 +176,13 @@ paths:
     delete:
       tags:
         - Users
-      summary: Delete user
-      description: Deletes user by ID. When somebody
+      summary: Delete login
+      description: Deletes login by ID. When somebody
         DELETE User, all Tasks where User is assignee
         should be updated to put userId=null
       responses:
         204:
-          description: The user has been deleted
+          description: The login has been deleted
         401:
           $ref: '#/components/responses/UnauthorizedError'
         404:
@@ -495,7 +495,7 @@ paths:
       security:
         []
       summary: Login
-      description: Logins a user and returns a JWT-token
+      description: Logins a login and returns a JWT-token
       requestBody:
         required: true
         content:
@@ -511,7 +511,7 @@ paths:
                   type: string
                   description: Password
               required:
-                - user
+                - login
                 - login
       responses:
         200:
